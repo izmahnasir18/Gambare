@@ -1,0 +1,12 @@
+class Solution(object):
+    def wateringPlants(self, plants, capacity):
+        steps = 0
+        water = capacity
+        for i in range (len(plants)):
+            if water >= plants[i]:
+                water -= plants[i]
+                steps += 1
+            else:
+                steps += 2 * i + 1
+                water = capacity - plants[i]
+        return steps

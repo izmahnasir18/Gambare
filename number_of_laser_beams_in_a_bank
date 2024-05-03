@@ -1,0 +1,10 @@
+class Solution(object):
+    def numberOfBeams(self, bank):
+        p = bank[0].count("1")
+        result = 0
+        for i in range(1, len(bank)):
+            currency = bank[i].count("1")
+            result += (p * currency)
+            if currency:
+                p = currency
+        return result

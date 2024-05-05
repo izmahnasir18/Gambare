@@ -1,0 +1,23 @@
+class Solution(object):
+    def diagonalSort(self, mat):
+        for i in range(len(mat)):
+            self.sortDiagonal(mat, i, 0)
+        for j in range(1, len(mat[i])):
+            self.sortDiagonal(mat, 0, j)
+            if i + j == len(mat) - 1:
+                mat[i][j] = self.sortDiagonal2(mat, i, j)
+        return mat
+
+    def sortDiagonal(self,mat,i,j):
+        diag = []
+        while i < len(mat) and j < len(mat[0]):
+            diag.append(mat[i][j])
+            i += 1
+            j += 1
+            diag.sort()
+            i, j = i - len(diag), j - len(diag)
+            for num in diag:
+                mat[i][j] = num
+                i += 1
+                j += 1
+                
